@@ -51,9 +51,7 @@ CREATE TABLE IF NOT EXISTS `job_types` (
   `created` TIMESTAMP NULL DEFAULT NULL,
   `modified` TIMESTAMP NULL DEFAULT NULL,
   `deleted` TIMESTAMP NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_job_types_job_categories_idx` (`job_category_id` ASC) VISIBLE,
-  CONSTRAINT `fk_job_types_job_categories` FOREIGN KEY (`job_category_id`) REFERENCES `job_categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 61 DEFAULT CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `jobs` (
@@ -89,88 +87,56 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `created` TIMESTAMP NULL DEFAULT NULL,
   `modified` TIMESTAMP NULL DEFAULT NULL,
   `deleted` TIMESTAMP NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_jobs_job_types_idx` (`job_type_id` ASC) VISIBLE,
-  INDEX `fk_jobs_job_categories_idx` (`job_category_id` ASC) VISIBLE,
-  CONSTRAINT `fk_jobs_job_categories` FOREIGN KEY (`job_category_id`) REFERENCES `job_categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_jobs_job_types` FOREIGN KEY (`job_type_id`) REFERENCES `job_types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 1501 DEFAULT CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `jobs_basic_abilities` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `job_id` INT(11) NULL DEFAULT NULL,
   `basic_ability_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_jobs_basic_abilities_jobs_idx` (`job_id` ASC) VISIBLE,
-  INDEX `fk_jobs_basic_abilities_basic_abilities_idx` (`basic_ability_id` ASC) VISIBLE,
-  CONSTRAINT `fk_jobs_basic_abilities_jobs` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_jobs_basic_abilities_basic_abilities` FOREIGN KEY (`basic_ability_id`) REFERENCES `basic_abilities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 3035 DEFAULT CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `jobs_career_paths` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `job_id` INT(11) NULL DEFAULT NULL,
   `affiliate_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_jobs_career_paths_jobs_idx` (`job_id` ASC) VISIBLE,
-  INDEX `fk_jobs_career_paths_affiliates_idx` (`affiliate_id` ASC) VISIBLE,
-  CONSTRAINT `fk_jobs_career_paths_jobs` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_jobs_career_paths_affiliates` FOREIGN KEY (`affiliate_id`) REFERENCES `affiliates` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 6071 DEFAULT CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `jobs_personalities` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `job_id` INT(11) NULL DEFAULT NULL,
   `personality_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_jobs_personalities_jobs_idx` (`job_id` ASC) VISIBLE,
-  INDEX `fk_jobs_personalities_personalities_idx` (`personality_id` ASC) VISIBLE,
-  CONSTRAINT `fk_jobs_personalities_jobs` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_jobs_personalities_personalities` FOREIGN KEY (`personality_id`) REFERENCES `personalities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 3035 DEFAULT CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `jobs_practical_skills` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `job_id` INT(11) NULL DEFAULT NULL,
   `practical_skill_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_jobs_practical_skills_jobs_idx` (`job_id` ASC) VISIBLE,
-  INDEX `fk_jobs_practical_skills_practical_skills_idx` (`practical_skill_id` ASC) VISIBLE,
-  CONSTRAINT `fk_jobs_practical_skills_jobs` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_jobs_practical_skills_practical_skills` FOREIGN KEY (`practical_skill_id`) REFERENCES `practical_skills` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 3535 DEFAULT CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `jobs_rec_qualifications` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `job_id` INT(11) NULL DEFAULT NULL,
   `affiliate_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_jobs_rec_qualifications_jobs_idx` (`job_id` ASC) VISIBLE,
-  INDEX `fk_jobs_rec_qualifications_affiliates_idx` (`affiliate_id` ASC) VISIBLE,
-  CONSTRAINT `fk_jobs_rec_qualifications_jobs` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_jobs_rec_qualifications_affiliates` FOREIGN KEY (`affiliate_id`) REFERENCES `affiliates` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 4035 DEFAULT CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `jobs_req_qualifications` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `job_id` INT(11) NULL DEFAULT NULL,
   `affiliate_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_jobs_req_qualifications_jobs_idx` (`job_id` ASC) VISIBLE,
-  INDEX `fk_jobs_req_qualifications_affiliates_idx` (`affiliate_id` ASC) VISIBLE,
-  CONSTRAINT `fk_jobs_req_qualifications_jobs` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_jobs_req_qualifications_affiliates` FOREIGN KEY (`affiliate_id`) REFERENCES `affiliates` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 6571 DEFAULT CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `jobs_tools` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `job_id` INT(11) NULL DEFAULT NULL,
   `affiliate_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_jobs_tools_jobs_idx` (`job_id` ASC) VISIBLE,
-  INDEX `fk_jobs_tools_affiliates_idx` (`affiliate_id` ASC) VISIBLE,
-  CONSTRAINT `fk_jobs_tools_jobs` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_jobs_tools_affiliates` FOREIGN KEY (`affiliate_id`) REFERENCES `affiliates` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 4035 DEFAULT CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `personalities` (
